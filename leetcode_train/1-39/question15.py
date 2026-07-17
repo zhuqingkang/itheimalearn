@@ -1,0 +1,39 @@
+class Solution:
+    def threeSum(self, nums: list[int]) -> list[list[int]]:
+        nums.sort()
+        result = []
+        n = len(nums)
+
+        for i in range(n):
+            left = i + 1
+            right = n - 1
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            if nums[i]  > 0:
+                break
+
+            while left < right:
+                sum = nums[i] + nums[left] + nums[right]
+                if sum == 0:
+                    result.append([nums[i], nums[left], nums[right]])
+
+                    # 去重：左指针跳过重复值
+                    while left < right and nums[left] == nums[left + 1]:
+                        left += 1
+
+                    # 去重：右指针跳过重复值
+                    while left < right and nums[right] == nums[right - 1]:
+                        right -= 1
+
+                    # 移动指针寻找下一组解
+                    left += 1
+                    right -= 1
+
+                elif sum < 0:
+                    left += 1
+                else:
+                    right -=1
+
+
+
+        return result
