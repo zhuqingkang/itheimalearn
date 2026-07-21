@@ -18,6 +18,7 @@ class Solution:
             hashmap[temp].append(s)
         return list(hashmap.values())
 
+
     """
     map = dict(zip(
     'abcdefghijklmnopqrstuvwxyz',
